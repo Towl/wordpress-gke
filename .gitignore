@@ -1,0 +1,5 @@
+mysql/*.sql.*
+wordpress/wp-content
+*.tar
+*.gz
+*.pem
