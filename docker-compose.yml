@@ -1,0 +1,23 @@
+version: '2'
+services:
+  db:
+    build: mysql
+    environment:
+      - "MYSQL_ROOT_PASSWORD=root"
+      - "MYSQL_DATABASE=${WP_DB_NAME}"
+      - "MYSQL_USER=${WP_DB_USER}"
+      - "MYSQL_PASSWORD=${WP_DB_PASSWORD}"
+  wordpress:
+    build: wordpress
+    ports:
+      - '80:8080'
+      - '443:8443'
+    depends_on:
+      - db
+    environment:
+      - "WORDPRESS_DATABASE_USER=${WP_DB_USER}"
+      - "WORDPRESS_DATABASE_NAME=${WP_DB_NAME}"
+      - "WORDPRESS_DATABASE_PASSWORD=${WP_DB_PASSWORD}"
+      - "WORDPRESS_SKIP_INSTALL=yes"
+      - "MARIADB_HOST=db"
+      - "MARIADB_PORT_NUMBER=3306"
