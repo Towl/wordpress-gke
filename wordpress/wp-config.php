@@ -6,7 +6,13 @@ define('DB_HOST', getenv('MARIADB_HOST').':'.getenv('MARIADB_PORT_NUMBER'));
 define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 
-define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
+define('MYSQL_CLIENT_SSL', true);
+define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL|MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);
+define('MYSQL_SSL_KEY', '/bitnami/certs/client-key.pem');
+define('MYSQL_SSL_CERT', '/bitnami/certs/client-cert.pem');
+define('MYSQL_SSL_CA', '/bitnami/certs/ca.pem');
+define('MYSQL_SSL_CAPATH', '/bitnami/certs');
+define('MYSQL_SSL_CIPHER', null);
 
 if ( ! defined( 'ABSPATH' ) ) {
   define('ABSPATH', '/opt/bitnami/wordpress' . '/');
