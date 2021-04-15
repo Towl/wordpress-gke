@@ -1,0 +1,8 @@
+diff --git a/wp-health.php b/wp-health.php
+new file mode 100644
+index 0000000000..d65afce96c
+--- /dev/null
++++ b/wp-health.php
+@@ -0,0 +1,2 @@
++<?php
++echo "Ok";

@@ -8,10 +8,18 @@ services:
       - "MYSQL_USER=${WP_DB_USER}"
       - "MYSQL_PASSWORD=${WP_DB_PASSWORD}"
   wordpress:
+    #image: eu.gcr.io/warm-canto-276410/wordpress
     build: wordpress
     ports:
       - '80:8080'
       - '443:8443'
+    volumes:
+      - './wordpress/keys.php:/bitnami/keys/keys.php'
+      - './wordpress/wp-content:/bitnami/wordpress/wp-content'
+      - './wordpress/wp-config.php:/bitnami/wordpress/wp-config.php'
+      - './wordpress/client-cert.pem:/bitnami/certs/client-cert.pem'
+      - './wordpress/client-key.pem:/bitnami/certs/client-key.pem'
+      - './wordpress/ca.pem:/bitnami/certs/ca.pem'
     depends_on:
       - db
     environment:
