@@ -1,0 +1,13 @@
+---
+stages:
+  - build
+
+build_image:latest:
+  stage: build
+  tags:
+    - shell
+  script:
+    - ./push-image-latest.sh
+  rule:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'

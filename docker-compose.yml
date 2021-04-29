@@ -14,7 +14,6 @@ services:
       - '80:8080'
       - '443:8443'
     volumes:
-      - './wordpress/keys.php:/bitnami/keys/keys.php'
       - './wordpress/wp-content:/bitnami/wordpress/wp-content'
       - './wordpress/wp-config.php:/bitnami/wordpress/wp-config.php'
       - './wordpress/client-cert.pem:/bitnami/certs/client-cert.pem'
