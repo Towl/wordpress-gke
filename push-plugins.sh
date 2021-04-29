@@ -1,12 +1,13 @@
 #!/bin/bash
 set -e
 
-NAMESPACE=$1
+INSTANCE=$1
+PLUGIN=$2
 
-POD=$(kubectl -n $NAMESPACE get pod -l app.kubernetes.io/name=wordpress -o name)
+POD=$(kubectl get pod -l app.kubernetes.io/instance=$INSTANCE -o name)
 
 echo "Push code to $POD ..."
 
-tar -cvf - ./wordpress/wp-content/plugins | kubectl exec -i $POD -- tar xf - -C /bitnami
+tar -cvf - ./wordpress/wp-content/plugins/$PLUGIN | kubectl exec -i $POD -- tar xf - -C /bitnami
 
 echo "Done"

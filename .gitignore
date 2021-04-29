@@ -1,5 +1,4 @@
 mysql/*.sql.*
-wordpress/keys.php
 wordpress/wp-content
 *.tar
 *.gz
